@@ -1,0 +1,2 @@
+# Friztalk-DjangoSocialNetwork
+ 
