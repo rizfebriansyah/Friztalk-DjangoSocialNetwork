@@ -1,0 +1,64 @@
+{% url 'postings:main-post-view' as path_to_postings %}
+{% url 'home-page' as path_to_home_page %}
+{% url 'userprofiles:my-profilepage-view' as path_to_my_profile_page %}
+{% url 'userprofiles:my-friend-invites-view' as path_to_my_friend_invites %}
+{% url 'userprofiles:invite-user-profiles-view' as path_to_potential_invites %}
+{% url 'userprofiles:all-user-profiles-view' as path_to_all_user_profiles %}
+{% url 'userprofiles:search-friends' as path_to_search_friends %}
+
+
+<div class="ui inverted menu nav mb-8">
+    <div class="ui container">
+        <a href="{{path_to_home_page}}" class="{% if request.path == path_to_home_page %}active{% endif %} item">
+          <h3>friztalk</h3>
+      </a>
+      {% if request.user.is_authenticated %}
+      <a href="{{path_to_postings}}" class="{% if request.path == path_to_postings %}active{% endif %} item">
+          Home
+      </a>
+      {% endif %}
+  
+      <div class="right menu">
+          {% if request.user.is_authenticated %}
+          <div class="item">
+              <div class="ui floating dropdown icon button teal"> Friends
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                      <a href="{{path_to_all_user_profiles}}" class="{% if request.path == path_to_all_user_profiles %}active{% endif %} item">
+                          All Profiles
+                      </a>
+                      <a href="{{path_to_potential_invites}}" class="{% if request.path == path_to_potential_invites %}active{% endif %} item">
+                          Send Invites
+                      </a>
+                      <a href="{{path_to_my_friend_invites}}" class="{% if request.path == path_to_my_friend_invites %}active{% endif %} item">
+                          Received Invites <div class="ui yellow horizontal label">{{number_invites}}</div>
+                      </a>
+                  </div>
+               </div>
+          </div>
+               <div class="item">
+                <form action="" method="GET">
+                  <div class="ui action left icon input">
+                  <input class="prompt" type="text" name='q' placeholder="Search for a friend...">
+                  <i class="search icon"></i>
+                  <button type='submit' class="ui button">Search</button>
+                  </div>
+              </form>
+              </div>
+          
+              <a href="{{path_to_my_profile_page}}" class="{% if request.path == path_to_my_profile_page %}active{% endif %} item">
+                  <img src={{picture.url}} class="ui avatar image">
+                   {{ request.user }}
+              </a>
+  
+              <a href="{% url 'account_logout'%}" class="ui item">
+                  Logout
+              </a>
+          {% else %}
+          <a href="{% url 'account_login'%}" class="ui item">
+                  Login
+              </a>
+          {% endif %}
+      </div>
+    </div>
+  </div>

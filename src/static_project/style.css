@@ -1,0 +1,51 @@
+body {
+    background: #b6b6b6 !important;
+}
+
+.nav {
+    border-radius: 5px !important;
+    padding: 9px 0 9px 0 !important;
+    background-color: #b10000 !important; 
+}
+
+.mb-8 {
+    margin-bottom: 8px !important;
+}
+
+.mt-6 {
+    margin-top: 6px !important;
+}
+
+.mymodal {
+    height: 300px !important;
+    top: 200px !important;
+    font-size: 20px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.w-large {
+    width: 205px !important;
+}
+
+.bwhite-lg {
+    background-color: transparent !important;
+}
+
+.bwhite-sm {
+    background-color: transparent !important;
+    width: 11px !important;
+}
+
+.remark-box {
+    display: none;
+}
+
+
+.rizmodal {
+    height: 280px !important;
+    top: 250px !important;
+    font-size: 22px !important;
+}
