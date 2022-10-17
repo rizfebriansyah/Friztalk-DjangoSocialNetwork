@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+all user profiles
+{% endblock title %}
+
+{% block content %}
+
+    {% if is_empty %}
+        <h1>There are no user profiles to view and interact with</h1>
+    {% endif %}
+
+    {% for obj in object_list %}
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="three wide column">
+                        <img class="ui medium rounded image" src={{obj.profile_picture.url}}>
+                    </div>
+                    <div class="thirteen wide column">
+                        <h2>Name: {{obj.f_name}}&nbsp{{obj.l_name}}</h2>
+                        <h3>Username: {{obj.user}}</h3>
+                        <p>{{obj.biography}}</p>
+                        <a href={{obj.attain_absolute_url}}><button class="ui primary button mb-5 w-large"><i class="id badge icon"></i>View User Profile</button></a>
+                    </div>
+
+                    {% if obj.user not in reln_receiver and obj.user not in reln_sender %}
+                        <form action="{% url 'userprofiles:invite-send' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value={{obj.pk}}>
+                            <button type="submit" class="ui positive basic button mb-5 w-large"><i class="plus square outline icon"></i>Add to my Friends</button>
+                        </form>
+                    {% endif %}
+
+
+                    {% if obj.user in reln_receiver and request.user not in obj.friends.all %}
+                        <button class="ui disabled button mb-5 w-large"><i class="handshake icon"></i>Still waiting for approval</button>
+                    {% endif %}
+
+                    {% if request.user in obj.friends.all %}    
+                    <form action="{% url 'userprofiles:erase-friend' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_pk" value={{obj.pk}}>
+                        <button type="submit" class="ui negative basic button mb-5 w-large"><i class="minus square outline icon"></i>Erase from my Friends</button>
+                        </form>
+                        {% endif %} 
+
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
