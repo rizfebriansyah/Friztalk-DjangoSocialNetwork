@@ -42,6 +42,6 @@ The original user who posts a status also have the choice to update.
 <img width="525" alt="friztalkupdate" src="https://user-images.githubusercontent.com/88428142/196317679-983ab421-cefc-49f2-9841-4dda24d175cd.png">
 
 ### View Profile
-Users are also able to view their own profile information by clicking on their profile picture on the navigation bar, just beside the search bar.
+Users are also able to view their own profile information by clicking on their profile picture on the navigation bar, just beside the search bar.  
 <img width="519" alt="friztalkprofile" src="https://user-images.githubusercontent.com/88428142/196317877-4b913a5b-0802-4520-9a7f-b542114e9a4f.png">
 
